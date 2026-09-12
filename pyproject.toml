@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "citegraph-studio"
+version = "1.0.0"
+description = "Desktop citation-dependency graph editor with SQLite persistence"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PySide6>=6.6,<7"]
+
+[project.scripts]
+citegraph-studio = "citegraph.app:run"
+
+[tool.setuptools.packages.find]
+include = ["citegraph*"]

@@ -1,0 +1,80 @@
+{
+  "format": "citegraph-studio",
+  "version": 1,
+  "project": {
+    "name": "Sample citation dependency map",
+    "description": "A compact example showing parent-to-child research dependencies.",
+    "created_at": "2026-07-31T00:00:00+00:00",
+    "updated_at": "2026-07-31T00:00:00+00:00"
+  },
+  "papers": [
+    {
+      "id": 1,
+      "title": "Foundational governing equation",
+      "authors": "A. Researcher, B. Researcher",
+      "year": 1983,
+      "doi": "10.0000/example.1",
+      "url": "https://doi.org/10.0000/example.1",
+      "tags": "foundation, equation",
+      "notes": "Defines the foundational model used by later work.",
+      "color": "#3b82f6",
+      "x": -360,
+      "y": -220,
+      "created_at": "2026-07-31T00:00:00+00:00",
+      "updated_at": "2026-07-31T00:00:00+00:00"
+    },
+    {
+      "id": 2,
+      "title": "Numerical integration method",
+      "authors": "C. Numerical",
+      "year": 2015,
+      "doi": "10.0000/example.2",
+      "url": "https://doi.org/10.0000/example.2",
+      "tags": "numerics, integration",
+      "notes": "Introduces the trajectory-integration method.",
+      "color": "#22c55e",
+      "x": 10,
+      "y": -220,
+      "created_at": "2026-07-31T00:00:00+00:00",
+      "updated_at": "2026-07-31T00:00:00+00:00"
+    },
+    {
+      "id": 3,
+      "title": "Application and sensitivity study",
+      "authors": "D. Applied, E. Analyst",
+      "year": 2026,
+      "doi": "",
+      "url": "",
+      "tags": "application, sensitivity",
+      "notes": "Uses both the governing equation and numerical method.",
+      "color": "#a78bfa",
+      "x": -170,
+      "y": 150,
+      "created_at": "2026-07-31T00:00:00+00:00",
+      "updated_at": "2026-07-31T00:00:00+00:00"
+    }
+  ],
+  "relations": [
+    {
+      "id": 1,
+      "parent_id": 1,
+      "child_id": 3,
+      "relation_type": "theory",
+      "label": "governing equation",
+      "notes": "The child adopts the parent paper's mathematical model.",
+      "created_at": "2026-07-31T00:00:00+00:00",
+      "updated_at": "2026-07-31T00:00:00+00:00"
+    },
+    {
+      "id": 2,
+      "parent_id": 2,
+      "child_id": 3,
+      "relation_type": "method",
+      "label": "trajectory solver",
+      "notes": "The child uses the numerical procedure introduced by the parent.",
+      "created_at": "2026-07-31T00:00:00+00:00",
+      "updated_at": "2026-07-31T00:00:00+00:00"
+    }
+  ],
+  "settings": {}
+}

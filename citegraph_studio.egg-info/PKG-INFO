@@ -1,0 +1,104 @@
+Metadata-Version: 2.4
+Name: citegraph-studio
+Version: 1.0.0
+Summary: Desktop citation-dependency graph editor with SQLite persistence
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PySide6<7,>=6.6
+Dynamic: license-file
+
+# CiteGraph Studio
+
+CiteGraph Studio is a local-first desktop application for building directed citation-dependency graphs. A parent node is a source paper; a child node is a paper that uses, extends, validates, critiques, or otherwise depends on it.
+
+## Features
+
+- Multiple persistent projects in a local SQLite database
+- Drag-and-drop paper nodes on an infinite, zoomable canvas
+- Parent → child dependency relations with arrowheads and typed edge labels
+- Paper metadata: title, authors, year, DOI, URL, tags, notes, and node color
+- Relation metadata: type, label, and detailed notes
+- Instant autosave of nodes, edges, positions, and edits
+- Undo and redo for adding, editing, moving, linking, and deleting
+- Search/filter across titles, authors, DOI, tags, years, and notes
+- Hierarchical, force-directed, and circular automatic layouts
+- Project import/export as CiteGraph JSON
+- BibTeX import by menu or file drag-and-drop
+- PNG, SVG, and Graphviz DOT export
+- Cycle detection, duplicate-relation prevention, cascading deletion, and SQLite foreign keys
+- Reopen any project with its exact stored node positions and linked relations
+
+## Installation
+
+Python 3.10 or newer is recommended.
+
+### Windows
+
+```powershell
+cd CiteGraph_Studio
+py -m venv .venv
+.venv\Scripts\activate
+py -m pip install -r requirements.txt
+py main.py
+```
+
+### macOS / Linux
+
+```bash
+cd CiteGraph_Studio
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 main.py
+```
+
+The database is stored at:
+
+- Windows: `%USERPROFILE%\.citegraph_studio\citegraph.db`
+- macOS/Linux: `~/.citegraph_studio/citegraph.db`
+
+Set `CITEGRAPH_HOME` to use a different storage folder.
+
+## Basic workflow
+
+1. Create a project, or import `examples/sample_project.citegraph.json` to explore the interface immediately.
+2. Press **Ctrl+N** to add paper nodes.
+3. Drag nodes to position them.
+4. Select a parent paper and press **Ctrl+L**, then click the child paper.
+5. Double-click a node or edge to edit its metadata.
+6. Use **Layout** for automatic arrangement.
+7. Close the app. Reopen the project later; all node positions and links are restored from SQLite.
+
+You can also select exactly two nodes and run **Link parent → child**. The upper/left selected node is treated as the parent, and the relation dialog shows the direction before saving.
+
+## Import and export
+
+- `.citegraph.json`: complete project, including positions and relations
+- `.bib`: imports paper nodes from BibTeX entries
+- `.png` / `.svg`: visual graph export
+- `.dot`: Graphviz-compatible directed graph
+
+JSON and BibTeX files may be dragged directly onto the canvas.
+
+## Run database tests
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+## Optional: build a standalone executable
+
+```bash
+python -m pip install pyinstaller
+pyinstaller --noconfirm --windowed --name CiteGraphStudio main.py
+```
+
+The executable will be created under `dist/CiteGraphStudio/`.
+
+## One-click launch scripts
+
+- Windows: double-click `run_windows.bat`
+- macOS/Linux: run `./run_linux_macos.sh`
+
+On first launch, the script creates a virtual environment and installs PySide6.
